@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="container-wrapper container d-flex justify-content-center align-items-center">
+  <div class="form-wrapper text-center">
+    <h2 class="text-center">Signup</h2>
+    <form [formGroup]="signupForm" (submit)="submit()" novalidate>
+      <div class="name-wrapper d-flex">
+        <div class="form-group mr-2">
+          <input type="text" formControlName="firstName" id="first-name-input" placeholder="First Name" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" formControlName="lastName" id="last-name-input" placeholder="Last Name" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="email" formControlName="email" id="email-input" placeholder="Email" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="password" formControlName="password" id="password-input" placeholder="Password" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <small><a routerLink="/login">Already have an Account?</a></small>
+  </div>
+</div>
