@@ -2,7 +2,7 @@ import { User } from '../interfaces/user';
 
 export class Message {
   message: string;
-  createdAt: Date;
+  createdAt: number;
   sender: User;
 
   constructor({message, createdAt, sender}) {

@@ -50,7 +50,6 @@ export class EditProfileComponent implements OnInit, OnDestroy {
 
   public uploadFile(event): void {
     const file = event.target.files[0];
-    console.log('curentUser: ', this.currentUser);
     const filePath = `${file.name}_${this.currentUser.id}`;
     const ref = this.fs.ref(filePath);
     const task = this.fs.upload(filePath, file);
@@ -84,7 +83,6 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     }
 
     const user = Object.assign({}, this.currentUser, {photoUrl: photo});
-    console.log('user: ', user);
     const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.id}`);
     userRef.set(user);
     this.alertService.alerts.next(new Alert('Your profile was successfully updated!', AlertType.Success));
