@@ -11,7 +11,7 @@
 <ng-template #chatMessages>
   <app-chatroom-title-bar [title]="chatroom.name"></app-chatroom-title-bar>
   <div class="message-wrapper h-100" #scrollContainer>
-    <ng-container *ngIf="messages.length > 0 else noMessages">
+    <ng-container *ngIf="messages?.length > 0 else noMessages">
       <ng-container *ngFor="let message of messages">
         <app-chat-message [message]="message"></app-chat-message>
       </ng-container>

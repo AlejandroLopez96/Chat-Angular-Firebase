@@ -7,7 +7,7 @@
       <a class="name" [routerLink]="'/profile/' + message.sender.id">
         {{ message.sender.firstName }} {{ message.sender.lastName }}
       </a>
-      <span class="timestamp">{{ message.createdAt.toDate() |  date:'medium'}}</span>
+      <span class="timestamp">{{ message.createdAt.toUTCString() |  date:'medium'}}</span>
     </div>
     <div class="message">{{ message.message }}</div>
   </div>

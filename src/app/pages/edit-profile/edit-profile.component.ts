@@ -23,7 +23,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   public userId: string = '';
   private subsubscriptions: Subscription[] = [];
   public uploadPercent: number = 0;
-  public downloadUrl: string | null = null;
+  public downloadUrl: Observable<any> | null = null;
 
 
   constructor(private auth: AuthService, private loadingService: LoadingService,
@@ -55,9 +55,9 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     const ref = this.fs.ref(filePath);
     const task = this.fs.upload(filePath, file);
     task.snapshotChanges().pipe(
-      finalize(() => this.downloadUrl = ref.getDownloadURL().subscribe(
-        url => this.downloadUrl = url
-      ))
+      finalize(() => {
+        ref.getDownloadURL().subscribe(url => this.downloadUrl = url);
+      })
     ).subscribe();
 
     // Obssrve the percentage changes
@@ -72,11 +72,6 @@ export class EditProfileComponent implements OnInit, OnDestroy {
       })
     );
 
-    // get notified when the download URL is available
-    // this.subsubscriptions.push(
-
-    //   // ref.getDownloadURL().subscribe(url => this.downloadUrl = url)
-    // );
   }
 
   public save(): void {
