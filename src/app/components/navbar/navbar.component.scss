@@ -1,7 +1,11 @@
 @import '../../../styles/variables';
 
-.nav-item, span {
+span {
   color: white;
+}
+
+.nav-item {
+  color: $light-grey;
 }
 
 a {

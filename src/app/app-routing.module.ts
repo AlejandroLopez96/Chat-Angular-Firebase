@@ -1,9 +1,12 @@
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { IsOwnerGuard } from './guards/is-owner.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
@@ -15,6 +18,8 @@ const routes: Routes = [
       { path: ':chatroomId', component: ChatComponent}
     ]
   },
+  { path: 'profile/:userId', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'profile/:userId/edit', component: EditProfileComponent, canActivate: [AuthGuard, IsOwnerGuard]},
   { path: '**', redirectTo: '/login' }
 
 ];

@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
+import { IsOwnerGuard } from './guards/is-owner.guard';
 
 // Services
 import { AlertService } from './services/alert.service';
@@ -32,6 +33,8 @@ import { ChatroomListComponent } from './pages/chat/components/chatroom-list/cha
 import { ChatroomTitleBarComponent } from './pages/chat/components/chatroom-title-bar/chatroom-title-bar.component';
 import { ChatMessageComponent } from './pages/chat/components/chat-message/chat-message.component';
 import { ChatroomWindowComponent } from './pages/chat/components/chatroom-window/chatroom-window.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,8 @@ import { ChatroomWindowComponent } from './pages/chat/components/chatroom-window
     ChatroomTitleBarComponent,
     ChatMessageComponent,
     ChatroomWindowComponent,
+    ProfileComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,8 @@ import { ChatroomWindowComponent } from './pages/chat/components/chatroom-window
     LoadingService,
     AuthService,
     AuthGuard,
-    ChatroomService
+    ChatroomService,
+    IsOwnerGuard
   ],
   bootstrap: [AppComponent]
 })

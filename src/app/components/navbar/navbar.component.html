@@ -1,13 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+<nav class="navbar navbar-expand-sm navbar-primary bg-primary">
   <div class="container">
     <span class="navbar-brand">ChatApp</span>
     <div class="page-links">
       <ul class="navbar-nav" *ngIf="currentUser else loggedOut">
         <li class="nav-item">
+          <a [routerLink]="'/profile/' + currentUser.id" routerLinkActive="active" class="nav-link">Profile</a>
+        </li>
+        <li class="nav-item">
           <a routerLink="/chat" routerLinkActive="active" class="nav-link">Chat Rooms</a>
         </li>
         <li class="nav-item">
-          <a routerLinkActive="active" class="nav-link" (click)="auth.logout()">Logout</a>
+          <a class="nav-link" (click)="auth.logout()">Logout</a>
         </li>
       </ul>
     </div>
